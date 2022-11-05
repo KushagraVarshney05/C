@@ -38,6 +38,7 @@ void insertatend(int x)
     newnode->prev = tail;
     tail->next = newnode;
     tail = newnode;
+    newnode->data = x;
 }
 int insertion()
 {
@@ -51,6 +52,7 @@ int insertion()
     }
     printf("enter the value you  want to be inserted");
     scanf("%d", &value);
+    printf("%d", value);
 
     if (pos == 1)
     {
@@ -104,14 +106,15 @@ void deletionatbeg()
 {
     temp = head;
     head = temp->next;
+    head->prev=0;
     printf("the value that deleted is %d", temp->data);
     free(temp);
 }
 void deletionatend()
 {
     temp = tail;
-    tail= temp->prev;
-    tail->next=0;
+    tail = temp->prev;
+    tail->next = 0;
     printf("the value that deleted is %d", temp->data);
     free(temp);
 }
@@ -135,16 +138,15 @@ void deletion(void)
     }
     else
     {
-        temp=head;
+        temp = head;
         while (i < pos)
         {
-            temp=temp->next;
+            temp = temp->next;
             i++;
-
         }
-        temp->prev->next=temp->next;
-        temp->next->prev=temp->prev;
-        printf("the value that deleted is %d",temp->data);
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        printf("the value that deleted is %d", temp->data);
         free(temp);
     }
     count--;
@@ -176,7 +178,29 @@ void main()
         count++;
     }
 
-    //insertion();
-    //reverse();
-    deletion();
+    int choice, n;
+    do
+    {
+        printf("enter your choice\n 1 FOR insertion\n 2 FOR deletion \n 3 FOR DISPLAY\n 4 for reversing\n 0 FOR EXIT\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            insertion();
+            break;
+
+        case 2:
+            deletion();
+            break;
+
+        case 3:
+            display();
+            break;
+        case 4:
+            reverse();
+            break;
+        default:
+            printf("you entered wrong input \n");
+        }
+    } while (choice);
 }
