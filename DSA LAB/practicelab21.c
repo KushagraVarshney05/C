@@ -41,7 +41,7 @@ void newlist()
 void traversal()
 {
     struct list *temp = head;
-    printf("/n");
+    printf("\n");
     printf("count is %d \n", count);
     while (temp != 0)
     {
