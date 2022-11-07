@@ -38,16 +38,27 @@ void newlist()
         scanf("%d", &choice);
     }
 }
-void splitting()
+struct list *splitting()
 {
-    struct list *temp=head, *head1=head,*head2;
-    int split=count/2;
-    while(split)
+    struct list *temp = head, *temp2;
+    int split = count / 2;
+    while (split--)
     {
-        temp=temp->next;
+        temp2 = temp;
+        temp = temp->next;
+        
     }
+    if (count % 2 != 0)
+    {   temp2 = temp;
+        temp = temp->next;
+    }
+    
+            temp2->next = 0;
+        
+
+    return temp;
 }
-void traversal()
+void traversal(struct list *head)
 {
     struct list *temp = head;
     printf("count is %d \n", count);
@@ -73,26 +84,25 @@ void traversal()
 //         first=first->next->next;
 //         second=second->next->next;
 
-
 //     }
 //     traversal();
 // }
 
-void reversal()
-{
-    struct list *prev = 0;
-    struct list *curr = head;
-    struct list *nextnode = head;
-    while (curr != 0)
-    {
-        nextnode = nextnode->next;
-        curr->next = prev;
-        prev = curr;
-        curr = nextnode;
-    }
-    head = prev;
-    traversal();
-}
+// void reversal()
+// {
+//     struct list *prev = 0;
+//     struct list *curr = head;
+//     struct list *nextnode = head;
+//     while (curr != 0)
+//     {
+//         nextnode = nextnode->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = nextnode;
+//     }
+//     head = prev;
+//     traversal();
+// }
 // void insertion()
 // {
 //     int posi, value, i = 2;
@@ -179,8 +189,13 @@ void main()
 {
     int n;
     newlist();
-    
-    
+    printf("kjdshf \n");
+    struct list *head2 = splitting();
+    printf("first half of linked list is \n");
+    traversal(head);
+    printf("second half of linked list is \n");
+    traversal(head2);
+
     // choice = 1;
     // while (choice)
     // {
@@ -202,4 +217,3 @@ void main()
     //     scanf("%d", &choice);
     // }
 }
-
