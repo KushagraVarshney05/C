@@ -53,118 +53,20 @@ void pairwiseswap()
 {
     struct list *first, *second;
     int temp;
-    first=head;
-    second=head->next;
-    while(first!=0 && second!=0)
+    first = head;
+    second = head->next;
+    while (first != 0 && second != 0&&second->next!=0)
     {
 
-        temp=first->data;
-        first->data=second->data;
-        second->data=temp;
-        first=first->next->next;
-        second=second->next->next;
-
-
+        temp = first->data;
+        first->data = second->data;
+        second->data = temp;
+        first = first->next->next;
+        second = second->next->next;
     }
     traversal();
 }
-// void reversal()
-// {
-//     struct list *prev = 0;
-//     struct list *curr = head;
-//     struct list *nextnode = head;
-//     while (curr != 0)
-//     {
-//         nextnode = nextnode->next;
-//         curr->next = prev;
-//         prev = curr;
-//         curr = nextnode;
-//     }
-//     head = prev;
-//     traversal();
-// }
-// void insertion()
-// {
-//     int posi, value, i = 2;
-//     struct list *temp;
-//     printf("enter the position where you want to insert the node");
-//     scanf("%d", &posi);
-//     struct list *newnode = (struct list *)malloc(sizeof(struct list));
 
-//     printf("enter the value you want to insert \n");
-//     scanf("%d", &value);
-//     newnode->data = value;
-//     newnode->next = 0;
-//     if (posi == 1)
-//     {
-//         newnode->next = head;
-//         head = newnode;
-//         count++;
-//     }
-//     else if (posi < 1 || posi > count + 1)
-//     {
-//         printf("invalid input");
-//         return;
-//     }
-//     else if (posi == count)
-//     {
-//         temp = head;
-//         while (temp->next != 0)
-//         {
-//             printf("%d \n", temp->data);
-//             temp = temp->next;
-//         }
-//         temp->next = newnode;
-//         newnode->next = 0;
-//         count++;
-//     }
-
-//     else
-//     {
-//         temp = head;
-//         while (i < posi)
-//         {
-//             temp = temp->next;
-//             i++;
-//         }
-
-//         newnode->next = temp->next;
-//         temp->next = newnode;
-//         count++;
-//     }
-//     traversal();
-// }
-// void deletenode()
-// {
-//     int pos, i = 1;
-//     struct list *temp;
-//     struct list *prev;
-//     if (head == 0)
-//     {
-//         printf("underflow");
-//     }
-//     printf("enter the position you want to delete");
-//     scanf("%d", &pos);
-//     if (pos == 1)
-//     {
-//         temp = head;
-//         head = head->next;
-//         free(temp);
-//     }
-//     else
-//     {
-//         temp = head;
-//         while (i < pos)
-//         {
-//             prev = temp;
-//             temp = temp->next;
-//             i++;
-//         }
-//         prev->next = temp->next;
-//         free(temp);
-//     }
-//     traversal();
-// }
 void main()
 {
     int n;
@@ -173,26 +75,4 @@ void main()
     traversal();
     printf("data after pair wise reversal");
     pairwiseswap();
-
-    // choice = 1;
-    // while (choice)
-    // {
-    //     printf("enter the operattion you want to perform \n 1: for INSEERTION \n 2:for DELETION \n 3:for REVERSAL");
-    //     scanf("%d", &n);
-    //     switch (n)
-    //     {
-    //     case 1:
-    //         insertion();
-    //         break;
-    //     case 2:
-    //         deletenode();
-    //         break;
-    //     case 3:
-    //         reversal();
-    //         break;
-    //     }
-    //     printf("enter 1 to perform more operations and o for exit");
-    //     scanf("%d", &choice);
-    // }
 }
-
