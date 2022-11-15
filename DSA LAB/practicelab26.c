@@ -11,6 +11,7 @@ struct node
 
 void push(char a)
 {
+
     struct node *newnode;
     newnode = (struct node *)malloc(sizeof(struct node));
 
@@ -28,6 +29,7 @@ void push(char a)
 }
 char pop()
 {
+   
     struct node *temp;
     char pop = head->data;
     temp = head;
@@ -39,17 +41,17 @@ char peek()
 {
     return head->data;
 }
-void display()
-{
-    struct node *temp;
-    temp = head;
-    printf("THE VALUES IN STACK ARE\n");
-    while (temp != 0)
-    {
-        printf("%d\n", temp->data);
-        temp = temp->next;
-    }
-}
+// void display()
+// {
+//     struct node *temp;
+//     temp = head;
+//     printf("THE VALUES IN STACK ARE\n");
+//     while (temp != 0)
+//     {
+//         printf("%c\n", temp->data);
+//         temp = temp->next;
+//     }
+// }
 int is_empty()
 {
     if (head == NULL)
@@ -72,7 +74,7 @@ int check_expression(char *str)
 {
 
     int l = strlen(str);
-    printf("%d",l);
+
     for (int i = 0; i < l; i++)
     {
         if (str[i] == '{' || str[i] == '[' || str[i] == '(')
@@ -82,8 +84,9 @@ int check_expression(char *str)
         }
         else if (str[i] == '}' || str[i] == ']' || str[i] == ')')
         {
-            if (is_empty == 1)
+            if (head == NULL)
             {
+
                 return 0;
             }
             else
@@ -91,16 +94,20 @@ int check_expression(char *str)
                 char a = pop();
                 if (match(a, str[i]) == 0)
                 {
+
                     return 0;
                 }
             }
         }
-        if (is_empty == 1)
-        {
-            return 1;
-        }
-        else
-            return 0;
+    }
+    if (head == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+
+        return 0;
     }
 }
 
@@ -110,7 +117,7 @@ int main()
     char str[100];
     printf("Enter the infix expression : ");
     gets(str);
-    printf("%c",str[3]);
+
     if (check_expression(str) == 1)
     {
         printf("the expression is balanced");
