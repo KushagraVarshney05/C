@@ -21,12 +21,14 @@ void push(char a)
         head = newnode;
         newnode->next = 0;
     }
+
     else
     {
         newnode->next = head;
         head = newnode;
     }
 }
+
 char pop()
 {
    
