@@ -15,5 +15,5 @@ int main()
         if (x <= 0)
         sum += 2;
     }
-    cout << "total no. of matches are   " << sum << endl;
+    cout << "total no. of matches in this week can be   " << sum << endl;
 }
